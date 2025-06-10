@@ -28,3 +28,12 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 💵 Optimizes cost (Glacier ~$0.004/GB vs Standard ~$0.023/GB)
 
 🛠️ Terraform-managed infrastructure
+
+# 🔧 System Software & Setup:
+
+1. On Your Local Machine (Linux or Windows):
+* Python 3.8+
+* pip (Python package installer)
+* AWS CLI configured
+* Terraform 1.0+
+* Git
