@@ -91,7 +91,7 @@ pip --version
 ```
 ## 2 Setup Terraform 
 **Download Terraform**:  
-   - Go to the [Terraform official website](https://www.terraform.io/downloads).  
+   - Go to the [Terraform official website](https://releases.hashicorp.com/terraform/1.12.1/terraform_1.12.1_windows_amd64.zip).  
    - Download the Windows 64-bit ZIP file.  
 
 **Extract the ZIP File**:  
