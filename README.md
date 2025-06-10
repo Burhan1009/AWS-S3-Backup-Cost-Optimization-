@@ -40,3 +40,10 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 
 2. AWS
 * An AWS account with : **IAM user with programmatic access & S3** and **Glacier permissions**
+
+
+# 📜 License:
+MIT License
+
+# 📞 Contact:
+Maintained by [Burhan Khan] – [job.khanburhan503@gmail.com]
