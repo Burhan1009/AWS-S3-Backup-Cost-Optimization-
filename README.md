@@ -153,3 +153,52 @@ pip --version
 
 ![image](https://github.com/user-attachments/assets/98595b48-163e-4d6c-8c5c-62d180668a08)
 
+## Even Follow This Steps Both are same 
+- Go to IAM Console → Policies → Create Policy
+- Paste this JSON
+- Attach to the specific user via Users → Add permissions
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "S3BucketAccess",
+            "Effect": "Allow",
+            "Action": [
+                "s3:ListBucket",
+                "s3:GetObject",
+                "s3:PutObject",
+                "s3:DeleteObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::YOUR-BUCKET-NAME",
+                "arn:aws:s3:::YOUR-BUCKET-NAME/*"
+            ]
+        },
+        {
+            "Sid": "SNSCloudWatchAccess",
+            "Effect": "Allow",
+            "Action": [
+                "sns:Publish",
+                "cloudwatch:GetMetricStatistics",
+                "cloudwatch:ListMetrics"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+![image](https://github.com/user-attachments/assets/87607182-5c11-4fdc-b042-6e5498b35d14)
+
+## Create Security credentials For access CLI Mode 
+- Click On User Which is created Few Mints ago
+- Select on Security credentials
+![image](https://github.com/user-attachments/assets/b101622e-e13a-4274-90b4-32e4cbe03d70)
+
+- Click on Create access key
+- Access key best practices & alternatives | Command Line Interface (CLI)
+- Confirmation : Check I understand the above recommendation and want to proceed to create an access key.
+- Give a Description tag value
+- click on create as you can see Access keys (1) created
+- 
+
