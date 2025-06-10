@@ -49,4 +49,9 @@ Fist Step Need to install Python Software & Setup Enviornment
 ![image](https://github.com/user-attachments/assets/78ad918a-742d-46bc-9d93-cbce5311e29f)
 
 * click on Close after install all packages
-* ![image](https://github.com/user-attachments/assets/a5b3f389-d0fc-4a92-8978-9c8a7bf12b4f)
+![image](https://github.com/user-attachments/assets/a5b3f389-d0fc-4a92-8978-9c8a7bf12b4f)
+
+* Verify
+![image](https://github.com/user-attachments/assets/c1fd77cc-b248-4b39-a713-569083b00386)
+
+
