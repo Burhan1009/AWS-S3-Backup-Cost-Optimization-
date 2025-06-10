@@ -224,3 +224,7 @@ AWS Secret Access Key [None]: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Your IAM use
 Default region name [None]: us-east-1  <-- Preferred region (e.g., us-west-2, eu-central-1)
 Default output format [None]: json  <-- (json/text/table)
 ```
+4 AWS S3 Listing Commands
+```powershell
+aws s3 ls
+```
