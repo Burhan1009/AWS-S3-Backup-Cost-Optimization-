@@ -78,3 +78,7 @@ C:\Users\Hensex\AppData\Local\Programs\Python\Python313\Scripts
     [EnvironmentVariableTarget]::Machine
 )
 ```
+## Verify the Path on PowerShell
+```
+$env:Path -split ';' | Select-String "Python313"
+```
