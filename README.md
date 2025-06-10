@@ -201,5 +201,26 @@ pip --version
 - Give a Description tag value
 - click on create as you can see Access keys (1) created
 - CLI Configuration Done
-#### I used my AWS Access Key and Secret Key to provision infrastructure using Terraform (IaC) and automate cloud operations with Python Boto3 SDK. This enabled secure, code-driven management of AWS services like S3
+##### I used my AWS Access Key and Secret Key to provision infrastructure using Terraform (IaC) and automate cloud operations with Python Boto3 SDK. This enabled secure, code-driven management of AWS services like S3
 
+## AWS CLI Configuration on Windows
+1. Install AWS CLI
+```powershell
+# Download and run the MSI installer from:
+https://aws.amazon.com/cli/
+
+# Verify installation:
+aws --version
+```
+
+2. Basic Configuration | Run in Command Prompt or PowerShell
+```powershell
+aws configure
+```
+3 You'll be prompted for
+```powershell
+AWS Access Key ID [None]: AKIAXXXXXXXXXXXXXXXX  <-- Your IAM user's access key
+AWS Secret Access Key [None]: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx  <-- Your IAM user's secret key
+Default region name [None]: us-east-1  <-- Preferred region (e.g., us-west-2, eu-central-1)
+Default output format [None]: json  <-- (json/text/table)
+```
