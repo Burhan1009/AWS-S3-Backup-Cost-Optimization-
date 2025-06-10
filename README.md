@@ -46,4 +46,4 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 MIT License
 
 # 📞 Contact:
-Maintained by [Burhan Khan] – [job.khanburhan503@gmail.com]
+Maintained by **Burhan Khan**  [LinkedIn Profile](https://www.linkedin.com/in/burhankhan503/) – [ job.khanburhan503@gmail.com ]
