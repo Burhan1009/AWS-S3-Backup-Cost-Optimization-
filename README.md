@@ -50,23 +50,3 @@ Fist Step Need to install Python Software & Setup Enviornment
 
 * click on Close after install all packages in Python
 ![image](https://github.com/user-attachments/assets/a5b3f389-d0fc-4a92-8978-9c8a7bf12b4f)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-# 📜 License:
-MIT License
-
-# 📞 Contact:
-Maintained by **Burhan Khan**  [LinkedIn Profile](https://www.linkedin.com/in/burhankhan503/) – [ job.khanburhan503@gmail.com ]
