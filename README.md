@@ -139,4 +139,3 @@ pip --version
      ```bash
      aws s3 ls
      ```
-![image](https://github.com/user-attachments/assets/544fbdfa-bf5d-471f-8d9e-a3cc2a09cfa4)
