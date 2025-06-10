@@ -32,7 +32,7 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 # 🔧 System Software & Setup:
 
 1. On Your Local Machine (Linux or Windows):
-* Python 3.8+
+* Python 3.13
 * pip (Python package installer)
 * AWS CLI configured
 * Terraform 1.0+
