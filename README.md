@@ -113,7 +113,7 @@ pip --version
 
 ## 3 **Configure AWS CLI**
 1. **Download AWS CLI**:  
-   - Go to the [AWS CLI official website](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html).  
+   - Go to the [AWS CLI official website]([https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html](https://awscli.amazonaws.com/AWSCLIV2.msi)).  
    - Download the MSI installer for Windows.  
 
 2. **Run the Installer**:  
