@@ -69,7 +69,7 @@ C:\Users\Hensex\AppData\Local\Programs\Python\Python313
 C:\Users\Hensex\AppData\Local\Programs\Python\Python313\Scripts
 ```
 ## Method 2: Using PowerShell (Admin) 
-```
+```powershell
 [Environment]::SetEnvironmentVariable(
     "Path",
     [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + 
@@ -157,7 +157,7 @@ pip --version
 - Go to IAM Console → Policies → Create Policy
 - Paste this JSON
 - Attach to the specific user via Users → Add permissions
-```
+```powershell
 {
     "Version": "2012-10-17",
     "Statement": [
