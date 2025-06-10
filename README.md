@@ -84,3 +84,8 @@ $env:Path -split ';' | Select-String "Python313"
 ```
 ![image](https://github.com/user-attachments/assets/94aabc6e-62cf-4e58-9a12-0a662d5a9ace)
 
+Python & PIP Verification : 
+```
+python --version
+pip --version
+```
