@@ -41,7 +41,7 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 2. AWS
 * An AWS account with : **IAM user with programmatic access & S3** and **Glacier permissions**
 
-## Project Setup
+## Project Setup 
 
 Fist Step Need to install Python Software & Setup Enviornment 
 
@@ -89,3 +89,4 @@ Python & PIP Verification :
 python --version
 pip --version
 ```
+## 2 Setup Terraform 
