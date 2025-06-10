@@ -43,7 +43,7 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 
 ## Project Setup
 
-Fist Step Need to install Python Software & Setup Env
+Fist Step Need to install Python Software & Setup Enviornment 
 
 
 
