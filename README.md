@@ -12,3 +12,5 @@ By compressing and uploading user and database directories to S3 and using AWS L
    └──> [Database/User Directory] -> Convert to ZIP with Date Folders -> Python Boto3 Script -> Upload to S3 -> Lifecycle Policy: Auto Move to Glacier
 ## AWS Infrastructure:
    └──> IAM Access Keys -> Terraform Configuration -> S3 Bucket with Lifecycle Rules
+## Automation Flow 
+Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (via Policy)
