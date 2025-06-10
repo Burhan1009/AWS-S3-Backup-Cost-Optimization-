@@ -14,3 +14,17 @@ By compressing and uploading user and database directories to S3 and using AWS L
    └──> IAM Access Keys -> Terraform Configuration -> S3 Bucket with Lifecycle Rules
 ## Automation Flow 
 Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (via Policy)
+
+# ✅ Features
+
+🔐 Secure IAM access with Access & Secret Keys
+
+📦 Compresses backup data into ZIP format with timestamps
+
+☁️ Uploads ZIP files to Amazon S3
+
+🔁 Automatically applies Lifecycle Policies to move files to Glacier
+
+💵 Optimizes cost (Glacier ~$0.004/GB vs Standard ~$0.023/GB)
+
+🛠️ Terraform-managed infrastructure
