@@ -109,4 +109,5 @@ pip --version
      ```bash
      terraform --version
      ```
-   - If installed correctly, the version of Terraform will be displayed.
+![image](https://github.com/user-attachments/assets/9293e483-645e-476c-b656-567844796365)
+
