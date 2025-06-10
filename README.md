@@ -111,3 +111,16 @@ pip --version
      ```
 ![image](https://github.com/user-attachments/assets/9293e483-645e-476c-b656-567844796365)
 
+## 3 **Configure AWS CLI**
+1. **Set Up AWS CLI**:  
+   - Open Command Prompt or PowerShell and run:  
+     ```bash
+     aws configure
+     ```
+   - Enter your AWS Access Key, Secret Key, Region, and output format when prompted.  
+
+2. **Test AWS CLI**:  
+   - Run a simple command to verify connectivity:  
+     ```bash
+     aws s3 ls
+     ```
