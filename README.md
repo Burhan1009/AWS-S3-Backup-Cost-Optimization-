@@ -112,14 +112,29 @@ pip --version
 ![image](https://github.com/user-attachments/assets/9293e483-645e-476c-b656-567844796365)
 
 ## 3 **Configure AWS CLI**
-1. **Set Up AWS CLI**:  
+1. **Download AWS CLI**:  
+   - Go to the [AWS CLI official website](https://docs.aws.amazon.com/cli/latest/userguide/install-cliv2-windows.html).  
+   - Download the MSI installer for Windows.  
+
+2. **Run the Installer**:  
+   - Double-click the downloaded MSI file.  
+   - Follow the installation wizard to complete the process.  
+
+3. **Verify Installation**:  
+   - Open Command Prompt or PowerShell and type:  
+     ```bash
+     aws --version
+     ```
+   - It should display the installed version of the AWS CLI.  
+
+4. **Set Up AWS CLI**:  
    - Open Command Prompt or PowerShell and run:  
      ```bash
      aws configure
      ```
    - Enter your AWS Access Key, Secret Key, Region, and output format when prompted.  
 
-2. **Test AWS CLI**:  
+5. **Test AWS CLI**:  
    - Run a simple command to verify connectivity:  
      ```bash
      aws s3 ls
