@@ -148,36 +148,8 @@ pip --version
 ## How to Apply
 - Go to IAM Console → Policies → Create Policy
 - Paste this JSON
-- SAttach to the specific user via Users → Add permissions
-```
-{
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Sid": "S3BucketAccess",
-            "Effect": "Allow",
-            "Action": [
-                "s3:ListBucket",
-                "s3:GetObject",
-                "s3:PutObject",
-                "s3:DeleteObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::YOUR-BUCKET-NAME",
-                "arn:aws:s3:::YOUR-BUCKET-NAME/*"
-            ]
-        },
-        {
-            "Sid": "SNSCloudWatchAccess",
-            "Effect": "Allow",
-            "Action": [
-                "sns:Publish",
-                "cloudwatch:GetMetricStatistics",
-                "cloudwatch:ListMetrics"
-            ],
-            "Resource": "*"
-        }
-    ]
-}
-```
-- 
+- Attach to the specific user via Users → Add permissions
+- Select AmazonS3FullAccess & AmazonSNSFullAccess
+
+![image](https://github.com/user-attachments/assets/98595b48-163e-4d6c-8c5c-62d180668a08)
+
