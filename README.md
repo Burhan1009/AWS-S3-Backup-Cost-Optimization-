@@ -90,3 +90,23 @@ python --version
 pip --version
 ```
 ## 2 Setup Terraform 
+**Download Terraform**:  
+   - Go to the [Terraform official website](https://www.terraform.io/downloads).  
+   - Download the Windows 64-bit ZIP file.  
+
+**Extract the ZIP File**:  
+   - Extract the downloaded ZIP file to a folder (e.g., `C:\terraform`).  
+
+**Add Terraform to the System PATH**:  
+   - Open **Start Menu**, search for "Environment Variables," and select "Edit the system environment variables."  
+   - Click **Environment Variables** under the System Properties dialog.  
+   - Under **System variables**, select `Path` and click **Edit**.  
+   - Click **New** and add the folder path where you extracted Terraform (e.g., `C:\terraform`).  
+   - Click **OK** to save changes.  
+
+**Verify Installation**:  
+   - Open Command Prompt or PowerShell and type:  
+     ```bash
+     terraform --version
+     ```
+   - If installed correctly, the version of Terraform will be displayed.
