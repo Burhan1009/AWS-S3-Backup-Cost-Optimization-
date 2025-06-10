@@ -64,4 +64,7 @@ Fist Step Need to install Python Software & Setup Enviornment
 * Go to Advanced tab → Environment Variables
 * Under System variables, find Path and click Edit
 * Click New and add these paths:
-* 
+```
+C:\Users\Hensex\AppData\Local\Programs\Python\Python313
+C:\Users\Hensex\AppData\Local\Programs\Python\Python313\Scripts
+```
