@@ -54,4 +54,7 @@ Fist Step Need to install Python Software & Setup Enviornment
 * Verify
 ![image](https://github.com/user-attachments/assets/c1fd77cc-b248-4b39-a713-569083b00386)
 
-## Setting Python Environment Path on Windows
+## 1 Setting Python Environment Path on Windows
+1. Locate Your Python Installation
+2. Your Python is installed at -> C:\Users\Hensex\AppData\Local\Programs\Python\Python313
+## 2. Add Python to System PATH (Permanent Solution)
