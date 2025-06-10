@@ -68,3 +68,13 @@ Fist Step Need to install Python Software & Setup Enviornment
 C:\Users\Hensex\AppData\Local\Programs\Python\Python313
 C:\Users\Hensex\AppData\Local\Programs\Python\Python313\Scripts
 ```
+## Method 2: Using PowerShell (Admin) 
+```
+[Environment]::SetEnvironmentVariable(
+    "Path",
+    [Environment]::GetEnvironmentVariable("Path", [EnvironmentVariableTarget]::Machine) + 
+    ";C:\Users\Hensex\AppData\Local\Programs\Python\Python313;" +
+    "C:\Users\Hensex\AppData\Local\Programs\Python\Python313\Scripts",
+    [EnvironmentVariableTarget]::Machine
+)
+```
