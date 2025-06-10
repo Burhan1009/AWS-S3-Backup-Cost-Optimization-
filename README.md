@@ -9,11 +9,7 @@ This project demonstrates how to automate backups from an on-premises server to 
 By compressing and uploading user and database directories to S3 and using AWS Lifecycle Policies, you can reduce your storage costs by up to 80%.
 
 ## On-Premise Server
-   └── [Database/User Directory]
-         └── Convert to ZIP with Date Folders
-               └── Python Boto3 Script
-                      └── Upload to S3
-                           └── Lifecycle Policy: Auto Move to Glacier
+   └──> [Database/User Directory] -> Convert to ZIP with Date Folders -> Python Boto3 Script -> Upload to S3 -> Lifecycle Policy: Auto Move to Glacier
 ## AWS Infrastructure:
    └── IAM Access Keys
    └── Terraform Configuration
