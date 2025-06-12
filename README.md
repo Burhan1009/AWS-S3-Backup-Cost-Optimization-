@@ -492,3 +492,41 @@ terraform apply
 terraform destroy
 ```
 ![image](https://github.com/user-attachments/assets/c3c51019-c0a6-480e-acce-0f4c0fa69d9d)
+
+# Prerequisites for Running the Python Script
+
+- 🔧 1. Install Python (Recommended: Python 3.8+)
+```script
+python --version
+```
+- 📦 2. Install Required Python Package
+```script
+pip install boto3
+```
+- 📂 3. Setup Your File Paths
+- Source Path: This is where your .bak or txt ya any other  files are stored:
+```script
+source_path = Path(r"D:\\DevOps Projects\\AWS-S3-Backup-Cost-Optimization-\\source")
+```
+- Destination Path: Where the .zip backup will be temporarily stored
+```script
+destination_path = Path(r"D:\\DevOps Projects\\AWS-S3-Backup-Cost-Optimization-\\destination")
+```
+- 🔐 4. AWS Credentials (IAM User)
+- You'll need
+```script
+aws_access_key
+aws_secret_key
+```
+- Make sure this IAM user has permissions for
+```script
+s3:PutObject
+sns:Publish
+```
+- 5. S3 Bucket and SNS Topic Must Exist
+```script
+S3 Bucket Name: Example — burhandemotws
+SNS Topic ARN: Example — arn:aws:sns:us-east-1:123456789012:s3-backup-topic
+```
+- 📧 6. SNS Email Subscription Must Be Confirmed
+Once the SNS topic is created (via Terraform or AWS Console), you must confirm the email subscription by clicking the link received in your inbox. Like I have atteched screenshort
