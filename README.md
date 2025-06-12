@@ -533,19 +533,19 @@ SNS Topic ARN: Example — arn:aws:sns:us-east-1:123456789012:s3-backup-topic
 
 ## Step-by-Step Flow of the Script
 - ✅ Step 1: Filter Yesterday’s .bak Files
-```script
+```python
 filter_previous_day_files(source_path)
 ```
 - ✅ Step 2: Create a Backup (.zip)
-```script
+```python
 create_backup(filtered_files, source_path, destination_path)
 ```
 - ✅ Step 3: Upload the ZIP File to S3
-```script
+```python
 upload_to_s3(zip_file, bucket_name, s3_folder, aws_access_key, aws_secret_key, region_name)
 ```
 - ✅ Step 4: Send SNS Email Notification After Upload
-```script
+```python
 send_sns_notification(
     sns_topic_arn,
     aws_access_key,
@@ -556,7 +556,7 @@ send_sns_notification(
 )
 ```
 - ✅ Final Variables You Need in Your Script
-```script
+```python
 source_path = Path(r"D:\\DevOps Projects\\AWS-S3-Backup-Cost-Optimization-\\source")
 destination_path = Path(r"D:\\DevOps Projects\\AWS-S3-Backup-Cost-Optimization-\\destination")
 
