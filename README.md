@@ -679,3 +679,19 @@ if previous_day_files:
 else:
     print("No files found for yesterday's date.")
 ```
+## Here's how to fully automate your Python S3 Backup Script using Task Scheduler to run daily at 1:00 AM — including credentials, file filtering, upload, and email via AWS SNS.
+### Step 2: Schedule Script with Windows Task Scheduler (1:00 AM Daily)
+- Open Task Scheduler Press **Windows + R**, type **taskschd.msc**, press Enter
+- Create New Task Click "Create Basic Task", Name: Daily S3 Backup, Description: Backup .txt files to S3 and send email
+- Trigger : Daily Start time: 1:00 AM
+- Action : Choose Start a Program Program/script: python, Add arguments: C:\Path\To\daily_backup.py (replace with the actual path)
+```powershell
+Program/script: python
+Add arguments: "D:\DevOps Projects\AWS-S3-Backup-Cost-Optimization-\daily_backup.py"
+```
+- 5. Finish
+  - Click Finish and your task is now scheduled!
+  - ✅ Your File Name Format : Make sure your .txt backup files are named like this:
+  ```txt
+  backup_2025_06_11_235904_1737411.txt
+  ```
