@@ -237,3 +237,23 @@ aws s3 ls
 
 # Terraform AWS S3 Bucket with Lifecycle Policy Automation
 - This repository uses Terraform to provision an AWS S3 bucket with automated lifecycle policies for cost-effective storage management.
+
+### Explanation of the code (point by point):
+
+terraform { ... }
+Declares the start of the Terraform configuration block.
+
+required_providers { ... }
+Specifies which providers are required for this Terraform project.
+
+aws = { ... }
+Defines the AWS provider configuration.
+
+source = "hashicorp/aws"
+Indicates that the AWS provider should be sourced from HashiCorp’s official provider registry.
+
+version = "6.0.0-beta3"
+Specifies the exact version (6.0.0-beta3) of the AWS provider to use.
+
+### Summary:
+-This block ensures Terraform uses the specified version of the AWS provider from HashiCorp’s registry for managing AWS resources.
