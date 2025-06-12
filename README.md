@@ -242,7 +242,7 @@ aws s3 ls
 
 ## main.tf file 
 
-```code
+```hcl
 terraform {
   required_providers {
     aws = {
@@ -253,20 +253,100 @@ terraform {
 }
 ```
 
-terraform { ... }
-Declares the start of the Terraform configuration block.
+1 terraform { ... } Declares the start of the Terraform configuration block.
 
-required_providers { ... }
-Specifies which providers are required for this Terraform project.
+2 required_providers { ... } Specifies which providers are required for this Terraform project.
 
-aws = { ... }
-Defines the AWS provider configuration.
+3 aws = { ... } Defines the AWS provider configuration.
 
-source = "hashicorp/aws"
-Indicates that the AWS provider should be sourced from HashiCorp’s official provider registry.
+4 source = "hashicorp/aws" Indicates that the AWS provider should be sourced from HashiCorp’s official provider registry.
 
-version = "6.0.0-beta3"
-Specifies the exact version (6.0.0-beta3) of the AWS provider to use.
+5 version = "6.0.0-beta3" Specifies the exact version (6.0.0-beta3) of the AWS provider to use.
 
 ### Summary:
 -This block ensures Terraform uses the specified version of the AWS provider from HashiCorp’s registry for managing AWS resources.
+
+## s3bucket.tf file
+```hcl
+# Configure the AWS provider with the specified region
+provider "aws" {
+  region = var.region
+}
+
+# Create an S3 bucket with specified name, tags, and lifecycle settings
+resource "aws_s3_bucket" "example_bucket" {
+  bucket = var.bucket_name
+
+  tags = var.bucket_tags
+
+  lifecycle {
+    prevent_destroy = false
+  }
+}
+
+# Enable versioning on the S3 bucket
+resource "aws_s3_bucket_versioning" "example" {
+  bucket = aws_s3_bucket.example_bucket.id
+
+  versioning_configuration {
+    status = "Enabled"
+  }
+}
+
+# Set up lifecycle rules for the S3 bucket (transition to Glacier, expire noncurrent versions)
+resource "aws_s3_bucket_lifecycle_configuration" "example" {
+  bucket = aws_s3_bucket.example_bucket.id
+
+  rule {
+    id = "transition-to-glacier"
+    filter {}
+
+    # Transition current objects to Glacier after 30 days
+    transition {
+      days          = 30
+      storage_class = "GLACIER"
+    }
+
+    # Transition noncurrent (previous) versions to Glacier after 30 days
+    noncurrent_version_transition {
+      noncurrent_days = 30
+      storage_class   = "GLACIER"
+    }
+
+    # Expire noncurrent versions after 90 days
+    noncurrent_version_expiration {
+      noncurrent_days = 90
+    }
+
+    status = "Enabled"
+  }
+}
+
+# Configure public access block settings for the S3 bucket (all public access allowed)
+resource "aws_s3_bucket_public_access_block" "example" {
+  bucket = aws_s3_bucket.example_bucket.id
+
+  block_public_acls       = false
+  block_public_policy     = false
+  ignore_public_acls      = false
+  restrict_public_buckets = false
+}
+
+# Attach a bucket policy to allow public read access to all objects in the bucket
+resource "aws_s3_bucket_policy" "allow_public_read" {
+  bucket = aws_s3_bucket.example_bucket.id
+
+  policy = jsonencode({
+    Version = "2012-10-17",
+    Statement = [
+      {
+        Sid       = "PublicReadGetObject",
+        Effect    = "Allow",
+        Principal = "*",
+        Action    = "s3:GetObject",
+        Resource  = "${aws_s3_bucket.example_bucket.arn}/*"
+      }
+    ]
+  })
+}
+```
