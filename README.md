@@ -251,6 +251,7 @@ terraform {
     }
   }
 }
+
 ```
 
 1 terraform { ... } Declares the start of the Terraform configuration block.
@@ -268,14 +269,13 @@ terraform {
 
 ## s3bucket.tf file
 ```hcl
-# Configure the AWS provider with the specified region
 provider "aws" {
   region = var.region
 }
 
-# Create an S3 bucket with specified name, tags, and lifecycle settings
 resource "aws_s3_bucket" "example_bucket" {
-  bucket = var.bucket_name
+  bucket        = var.bucket_name
+  force_destroy = true
 
   tags = var.bucket_tags
 
@@ -284,7 +284,6 @@ resource "aws_s3_bucket" "example_bucket" {
   }
 }
 
-# Enable versioning on the S3 bucket
 resource "aws_s3_bucket_versioning" "example" {
   bucket = aws_s3_bucket.example_bucket.id
 
@@ -293,7 +292,6 @@ resource "aws_s3_bucket_versioning" "example" {
   }
 }
 
-# Set up lifecycle rules for the S3 bucket (transition to Glacier, expire noncurrent versions)
 resource "aws_s3_bucket_lifecycle_configuration" "example" {
   bucket = aws_s3_bucket.example_bucket.id
 
@@ -301,19 +299,16 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
     id = "transition-to-glacier"
     filter {}
 
-    # Transition current objects to Glacier after 30 days
     transition {
       days          = 30
       storage_class = "GLACIER"
     }
 
-    # Transition noncurrent (previous) versions to Glacier after 30 days
     noncurrent_version_transition {
       noncurrent_days = 30
       storage_class   = "GLACIER"
     }
 
-    # Expire noncurrent versions after 90 days
     noncurrent_version_expiration {
       noncurrent_days = 90
     }
@@ -322,33 +317,61 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
   }
 }
 
-# Configure public access block settings for the S3 bucket (all public access allowed)
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.example_bucket.id
-
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  bucket                  = aws_s3_bucket.example_bucket.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
-# Attach a bucket policy to allow public read access to all objects in the bucket
-resource "aws_s3_bucket_policy" "allow_public_read" {
+# SNS topic
+# resource "aws_sns_topic" "s3_notifications" {
+#   name = "s3-backup-notify-topic"
+# }
+
+# SNS topic subscription (email)
+resource "aws_sns_topic_subscription" "email" {
+  topic_arn = aws_sns_topic.s3_notifications.arn
+  protocol  = "email"
+  endpoint  = var.notification_email
+}
+
+# S3 bucket notification to SNS
+resource "aws_s3_bucket_notification" "s3_event_notification" {
   bucket = aws_s3_bucket.example_bucket.id
+
+  topic {
+    topic_arn = aws_sns_topic.s3_notifications.arn
+    events    = ["s3:ObjectCreated:*"]
+  }
+
+  depends_on = [aws_s3_bucket.example_bucket, aws_sns_topic.s3_notifications]
+}
+resource "aws_sns_topic" "s3_notifications" {
+  name = "s3-backup-notify-topic"
 
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Sid       = "PublicReadGetObject",
+        Sid       = "AllowS3Publish",
         Effect    = "Allow",
-        Principal = "*",
-        Action    = "s3:GetObject",
-        Resource  = "${aws_s3_bucket.example_bucket.arn}/*"
+        Principal = {
+          Service = "s3.amazonaws.com"
+        },
+        Action    = "SNS:Publish",
+        Resource  = "*",
+        Condition = {
+          ArnLike = {
+            "aws:SourceArn" = "arn:aws:s3:::${var.bucket_name}"
+          }
+        }
       }
     ]
   })
 }
+
 ```
 ### Explanation of the selected code (point by point)
 - Lifecycle Rule Block (rule { ... }) Defines a lifecycle rule for the S3 bucket to manage object storage and cost.
@@ -361,14 +384,12 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
 
 ## variable.tf file 
 ```hcl
-# Variable block for S3 bucket name
 variable "bucket_name" {
   description = "Name of the S3 bucket"
   type        = string
   default     = "burhandemotws"
 }
 
-# Variable block for S3 bucket tags (as a map)
 variable "bucket_tags" {
   description = "Tags for the S3 bucket"
   type = map(string)
@@ -378,12 +399,18 @@ variable "bucket_tags" {
   }
 }
 
-# Variable block for AWS region
 variable "region" {
   description = "AWS Region"
   type        = string
   default     = "us-east-1"
 }
+
+variable "notification_email" {
+  description = "Email address to receive S3 notifications"
+  type        = string
+  default     = "job.khanburhan503@gmail.com"  # 👈 Yahan apna email daalein
+}
+
 ```
 ### Explanation of the code (point by point)
 - variable "bucket_name" { ... } <br/>
@@ -406,3 +433,26 @@ variable "region" {
 
 ### Summary
 - These variable blocks define configurable values for your Terraform project, making it easy to change the S3 bucket name, tags, and AWS region without modifying the main code.
+
+## Output.tf File
+
+```hcl
+output "bucket_name" {
+  description = "The name of the created S3 bucket"
+  value       = aws_s3_bucket.example_bucket.id
+}
+
+output "region" {
+  description = "The AWS region used"
+  value       = var.region
+}
+
+output "sns_notification_email" {
+  description = "SNS email address to receive S3 upload notifications"
+  value       = var.notification_email
+}
+output "sns_topic_arn" {
+  description = "ARN of the SNS topic for S3 notifications"
+  value       = aws_sns_topic.s3_notifications.arn
+}
+```
