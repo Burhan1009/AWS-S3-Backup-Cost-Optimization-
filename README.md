@@ -358,3 +358,30 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
 - Status Enabled (status = "Enabled") Activates this lifecycle rule.
 - Public Access Block Resource (aws_s3_bucket_public_access_block) Configures the S3 bucket’s public access settings.
 - All Public Access Allowed All four settings (**block_public_acls, block_public_policy, ignore_public_acls, restrict_public_buckets**) are set to false, meaning public access is not restricted for this bucket.
+
+## variable.tf file 
+```hcl
+# Variable block for S3 bucket name
+variable "bucket_name" {
+  description = "Name of the S3 bucket"
+  type        = string
+  default     = "burhandemotws"
+}
+
+# Variable block for S3 bucket tags (as a map)
+variable "bucket_tags" {
+  description = "Tags for the S3 bucket"
+  type = map(string)
+  default = {
+    Name        = "BurhanDemoTWS"
+    Environment = "Production"
+  }
+}
+
+# Variable block for AWS region
+variable "region" {
+  description = "AWS Region"
+  type        = string
+  default     = "us-east-1"
+}
+```
