@@ -234,3 +234,6 @@ Default output format [None]: json  <-- (json/text/table)
 aws s3 ls
 ```
 ![image](https://github.com/user-attachments/assets/45e71ddf-890e-45e9-b188-75572dde6646)
+
+# Terraform AWS S3 Bucket with Lifecycle Policy Automation
+- This repository uses Terraform to provision an AWS S3 bucket with automated lifecycle policies for cost-effective storage management.
