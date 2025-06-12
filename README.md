@@ -456,3 +456,38 @@ output "sns_topic_arn" {
   value       = aws_sns_topic.s3_notifications.arn
 }
 ```
+## Standard Terraform Workflow
+1 terraform init
+- Initializes your working directory containing Terraform configuration files.
+- Downloads required provider plugins and modules.
+- Should be run first whenever you start with new Terraform code or clone existing code.
+
+2 terraform plan
+- Creates an execution plan showing what actions Terraform will take to achieve the desired state.
+- Shows what resources will be created, modified, or destroyed.
+- Does not make any actual changes to your infrastructure.
+- Always review the plan before applying!
+
+3 terraform apply
+- Executes the actions proposed in the **terraform plan**.
+- Actually creates/modifies/destroys infrastructure resources.
+- Will prompt for confirmation unless run with **-auto-approve flag**
+
+4 terraform destroy
+- Destroys all resources managed by your Terraform configuration.
+- Should be used carefully as it removes infrastructure.
+
+## Example Workflow
+```hcl
+# Initialize Terraform
+terraform init
+
+# Review what will be created
+terraform plan
+
+# Apply the changes (after verifying the plan looks correct)
+terraform apply
+
+# When finished, to clean up (if desired)
+terraform destroy
+```
