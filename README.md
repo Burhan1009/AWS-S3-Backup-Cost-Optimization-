@@ -530,6 +530,9 @@ SNS Topic ARN: Example — arn:aws:sns:us-east-1:123456789012:s3-backup-topic
 ```
 - 📧 6. SNS Email Subscription Must Be Confirmed
 - Once the SNS topic is created (via Terraform or AWS Console), you must confirm the email subscription by clicking the link received in your inbox. Like I have atteched screenshort
+![TWSDEMO2](https://github.com/user-attachments/assets/eda131be-94ae-40ad-bed9-906a2f521f3f)
+
+![TWSDEMO](https://github.com/user-attachments/assets/232bf9c5-490a-42d7-966d-50a52881b390)
 
 ## Step-by-Step Flow of the Script
 - ✅ Step 1: Filter Yesterday’s .bak Files
@@ -679,19 +682,40 @@ if previous_day_files:
 else:
     print("No files found for yesterday's date.")
 ```
-## Here's how to fully automate your Python S3 Backup Script using Task Scheduler to run daily at 1:00 AM — including credentials, file filtering, upload, and email via AWS SNS.
-### Step 2: Schedule Script with Windows Task Scheduler (1:00 AM Daily)
-- Open Task Scheduler Press **Windows + R**, type **taskschd.msc**, press Enter
-- Create New Task Click "Create Basic Task", Name: Daily S3 Backup, Description: Backup .txt files to S3 and send email
-- Trigger : Daily Start time: 1:00 AM
-- Action : Choose Start a Program Program/script: python, Add arguments: C:\Path\To\daily_backup.py (replace with the actual path)
-```powershell
-Program/script: python
-Add arguments: "D:\DevOps Projects\AWS-S3-Backup-Cost-Optimization-\daily_backup.py"
+# 🕒 Schedule with Windows Task Scheduler
+1 Step-by-Step Guide 
+- Open Task Scheduler
+- Press Windows + R → Type taskschd.msc → Press Enter
+
+2 Create a Basic Task 
+- Click “Create Basic Task…” Name: **Daily S3 Backup **, Description: ```powershell ** Backup .txt files to S3 and send email** ```
+
+3 Set Trigger
+- Choose Daily
+- Start time: ```powershell 1:00 AM ```
+
+4 Set Action
+- Choose Start a Program
+- Program/script: **python**
+- Add arguments: ```txt "D:\DevOps Projects\AWS-S3-Backup-Cost-Optimization-\daily_backup.py" ```
+
+5 Finish 
+- Confirm and click Finish
+- ✅ Task is now scheduled to run daily at 1:00 AM.
+
+6 📧 Email Notification Format
+- The SNS email you receive will contain this message:
+```hcl
+Subject: Daily S3 Backup
+
+✅ Your database has been uploaded on S3. Please check.
 ```
-- 5. Finish
-  - Click Finish and your task is now scheduled!
-  - ✅ Your File Name Format : Make sure your .txt backup files are named like this:
-  ```txt
-  backup_2025_06_11_235904_1737411.txt
-  ```
+![image](https://github.com/user-attachments/assets/a58e83c7-3f5c-4aee-9621-3c42ade3b5fa)
+
+![image](https://github.com/user-attachments/assets/a6cc6a53-5d31-4fc5-977b-fcc358b803c7)
+
+![image](https://github.com/user-attachments/assets/ddf547ef-ee52-4af2-8a73-c3c6fc661184)
+
+
+
+
