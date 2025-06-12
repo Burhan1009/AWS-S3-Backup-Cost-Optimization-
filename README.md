@@ -240,6 +240,19 @@ aws s3 ls
 
 ### Explanation of the code (point by point):
 
+## main.tf file 
+
+```json
+terraform {
+  required_providers {
+    aws = {
+      source = "hashicorp/aws"
+      version = "6.0.0-beta3"
+    }
+  }
+}
+```
+
 terraform { ... }
 Declares the start of the Terraform configuration block.
 
