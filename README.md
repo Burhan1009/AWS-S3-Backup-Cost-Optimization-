@@ -264,7 +264,7 @@ terraform {
 5 version = "6.0.0-beta3" Specifies the exact version (6.0.0-beta3) of the AWS provider to use.
 
 ### Summary:
--This block ensures Terraform uses the specified version of the AWS provider from HashiCorp’s registry for managing AWS resources.
+- This block ensures Terraform uses the specified version of the AWS provider from HashiCorp’s registry for managing AWS resources.
 
 ## s3bucket.tf file
 ```hcl
@@ -350,3 +350,11 @@ resource "aws_s3_bucket_policy" "allow_public_read" {
   })
 }
 ```
+### Explanation of the selected code (point by point)
+- Lifecycle Rule Block (rule { ... }) Defines a lifecycle rule for the S3 bucket to manage object storage and cost.
+- Transition to Glacier (transition { ... }) Moves current objects to the GLACIER storage class after 30 days to save costs.
+- Noncurrent Version Transition (noncurrent_version_transition { ... }) Moves previous versions of objects (noncurrent versions) to GLACIER after 30 days.
+- Noncurrent Version Expiration (noncurrent_version_expiration { ... }) Permanently deletes noncurrent object versions after 90 days.
+- Status Enabled (status = "Enabled") Activates this lifecycle rule.
+- Public Access Block Resource (aws_s3_bucket_public_access_block) Configures the S3 bucket’s public access settings.
+- All Public Access Allowed All four settings (**block_public_acls, block_public_policy, ignore_public_acls, restrict_public_buckets**) are set to false, meaning public access is not restricted for this bucket.
