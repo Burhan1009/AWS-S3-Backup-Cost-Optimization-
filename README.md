@@ -529,4 +529,42 @@ S3 Bucket Name: Example — burhandemotws
 SNS Topic ARN: Example — arn:aws:sns:us-east-1:123456789012:s3-backup-topic
 ```
 - 📧 6. SNS Email Subscription Must Be Confirmed
-Once the SNS topic is created (via Terraform or AWS Console), you must confirm the email subscription by clicking the link received in your inbox. Like I have atteched screenshort
+- Once the SNS topic is created (via Terraform or AWS Console), you must confirm the email subscription by clicking the link received in your inbox. Like I have atteched screenshort
+
+## Step-by-Step Flow of the Script
+- ✅ Step 1: Filter Yesterday’s .bak Files
+```script
+filter_previous_day_files(source_path)
+```
+- ✅ Step 2: Create a Backup (.zip)
+```script
+create_backup(filtered_files, source_path, destination_path)
+```
+- ✅ Step 3: Upload the ZIP File to S3
+```script
+upload_to_s3(zip_file, bucket_name, s3_folder, aws_access_key, aws_secret_key, region_name)
+```
+- ✅ Step 4: Send SNS Email Notification After Upload
+```script
+send_sns_notification(
+    sns_topic_arn,
+    aws_access_key,
+    aws_secret_key,
+    region_name,
+    subject="Backup Notification",
+    message="✅ Your database has been uploaded on S3. Please check."
+)
+```
+- ✅ Final Variables You Need in Your Script
+```script
+source_path = Path(r"D:\\DevOps Projects\\AWS-S3-Backup-Cost-Optimization-\\source")
+destination_path = Path(r"D:\\DevOps Projects\\AWS-S3-Backup-Cost-Optimization-\\destination")
+
+bucket_name = "burhandemotws"
+s3_folder = (datetime.date.today() - datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+
+aws_access_key = "YOUR_AWS_ACCESS_KEY"
+aws_secret_key = "YOUR_AWS_SECRET_KEY"
+region_name = "us-east-1"
+sns_topic_arn = "arn:aws:sns:us-east-1:YOUR_ACCOUNT_ID:YOUR_TOPIC_NAME"
+```
