@@ -491,3 +491,4 @@ terraform apply
 # When finished, to clean up (if desired)
 terraform destroy
 ```
+![image](https://github.com/user-attachments/assets/c3c51019-c0a6-480e-acce-0f4c0fa69d9d)
