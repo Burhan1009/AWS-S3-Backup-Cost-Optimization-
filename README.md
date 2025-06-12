@@ -386,23 +386,23 @@ variable "region" {
 }
 ```
 ### Explanation of the code (point by point)
-- variable "bucket_name" { ... }
-  1 Declares a variable for the S3 bucket name
-  2 Sets a description for documentation
-  3 Specifies the type as a string.
-  4 Provides a default value: "burhandemotws".
+- variable "bucket_name" { ... } <br/>
+  1 Declares a variable for the S3 bucket name <br/>
+  2 Sets a description for documentation <br/>
+  3 Specifies the type as a string. <br/>
+  4 Provides a default value: "burhandemotws". <br/>
 
-- variable "bucket_tags" { ... }
-  1 Declares a variable for S3 bucket tags
-  2 Sets a description for documentation.
-  3 Specifies the type as a map of strings.
-  4 Provides default tags : Name = "BurhanDemoTWS" | Environment = "Production"
+- variable "bucket_tags" { ... } <br/>
+  1 Declares a variable for S3 bucket tags <br/>
+  2 Sets a description for documentation. <br/>
+  3 Specifies the type as a map of strings. <br/>
+  4 Provides default tags : Name = "BurhanDemoTWS" | Environment = "Production" <br/>
 
-- variable "region" { ... }
-  1 Declares a variable for the AWS region.
-  2 Sets a description for documentation.
-  3 Specifies the type as a string.
-  4 Provides a default value: "us-east-1".
+- variable "region" { ... } <br/>
+  1 Declares a variable for the AWS region. <br/>
+  2 Sets a description for documentation. <br/>
+  3 Specifies the type as a string. <br/>
+  4 Provides a default value: "us-east-1". <br/>
 
 ### Summary
 - These variable blocks define configurable values for your Terraform project, making it easy to change the S3 bucket name, tags, and AWS region without modifying the main code.
