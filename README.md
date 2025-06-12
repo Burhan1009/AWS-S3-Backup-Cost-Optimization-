@@ -84,7 +84,7 @@ $env:Path -split ';' | Select-String "Python313"
 ```
 ![image](https://github.com/user-attachments/assets/94aabc6e-62cf-4e58-9a12-0a662d5a9ace)
 
-##To install the boto3 library in Python, run the following command in your terminal or command prompt:
+## To install the boto3 library in Python, run the following command in your terminal or command prompt:
 ```
 pip install boto3
 ```
