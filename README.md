@@ -242,7 +242,7 @@ aws s3 ls
 
 ## main.tf file 
 
-```json
+```code
 terraform {
   required_providers {
     aws = {
