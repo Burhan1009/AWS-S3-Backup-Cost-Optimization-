@@ -530,9 +530,8 @@ SNS Topic ARN: Example — arn:aws:sns:us-east-1:123456789012:s3-backup-topic
 ```
 - 📧 6. SNS Email Subscription Must Be Confirmed
 - Once the SNS topic is created (via Terraform or AWS Console), you must confirm the email subscription by clicking the link received in your inbox. Like I have atteched screenshort
-![TWSDEMO2](https://github.com/user-attachments/assets/eda131be-94ae-40ad-bed9-906a2f521f3f)
+![image](https://github.com/user-attachments/assets/8681b49f-f689-462a-8357-3629b75a8cd9)
 
-![TWSDEMO](https://github.com/user-attachments/assets/232bf9c5-490a-42d7-966d-50a52881b390)
 
 ## Step-by-Step Flow of the Script
 - ✅ Step 1: Filter Yesterday’s .bak Files
