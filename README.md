@@ -716,5 +716,12 @@ Subject: Daily S3 Backup
 ![image](https://github.com/user-attachments/assets/ddf547ef-ee52-4af2-8a73-c3c6fc661184)
 
 
-
+# ⚠ Important Notice
+- This project (and upcoming ones) is made only for learning.
+- ✅ You can share it on LinkedIn for learning.
+- ❌ You cannot use this on personal YouTube or other learning platforms.
+- 👨‍💻 This is made for beginners and new learners—please respect the work.
+- Only the TWS Community is allowed to share this.
+Thanks for understanding!
+Burhan
 
