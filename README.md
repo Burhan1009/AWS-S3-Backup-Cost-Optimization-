@@ -722,6 +722,6 @@ Subject: Daily S3 Backup
 - ❌ You cannot use this on personal YouTube or other learning platforms.
 - 👨‍💻 This is made for beginners and new learners—please respect the work.
 - Only the TWS Community is allowed to share this.
-Thanks for understanding!
+- Thanks for understanding!<br/>
 Burhan
 
