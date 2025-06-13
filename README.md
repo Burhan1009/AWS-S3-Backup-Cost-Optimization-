@@ -1,7 +1,7 @@
 # AWS-S3-Backup-Cost-Optimization-
-AWS S3 Backup Cost Optimization with Glacier &amp; Lifecycle Policies (Python + Boto3 + Terraform)
+AWS S3 Backup Cost Optimization with Python (boto3): Automatically Move Old Backups to Glacier & Send Notifications via SNS Using Lifecycle Policies
 
-![NewProject](https://github.com/user-attachments/assets/e0cb64a1-59df-4d60-9da4-26ffb67f4228)
+![image](https://github.com/user-attachments/assets/b40b6158-970c-4014-8e39-352c2b0ff7bc)
 
 # 📄 Project Description:
 This project demonstrates how to automate backups from an on-premises server to Amazon S3 and optimize storage costs by moving older backups to Amazon S3 Glacier using Lifecycle Policies. The solution is built using Python (Boto3) for automation and Terraform for AWS infrastructure provisioning.
