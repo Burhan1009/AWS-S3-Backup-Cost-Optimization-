@@ -3,7 +3,8 @@ provider "aws" {
 }
 
 resource "aws_s3_bucket" "example_bucket" {
-  bucket = var.bucket_name
+  bucket        = var.bucket_name
+  force_destroy = true
 
   tags = var.bucket_tags
 
@@ -46,26 +47,55 @@ resource "aws_s3_bucket_lifecycle_configuration" "example" {
 }
 
 resource "aws_s3_bucket_public_access_block" "example" {
-  bucket = aws_s3_bucket.example_bucket.id
-
-  block_public_acls       = false
-  block_public_policy     = false
-  ignore_public_acls      = false
-  restrict_public_buckets = false
+  bucket                  = aws_s3_bucket.example_bucket.id
+  block_public_acls       = true
+  block_public_policy     = true
+  ignore_public_acls      = true
+  restrict_public_buckets = true
 }
 
-resource "aws_s3_bucket_policy" "allow_public_read" {
+# SNS topic
+# resource "aws_sns_topic" "s3_notifications" {
+#   name = "s3-backup-notify-topic"
+# }
+
+# SNS topic subscription (email)
+resource "aws_sns_topic_subscription" "email" {
+  topic_arn = aws_sns_topic.s3_notifications.arn
+  protocol  = "email"
+  endpoint  = var.notification_email
+}
+
+# S3 bucket notification to SNS
+resource "aws_s3_bucket_notification" "s3_event_notification" {
   bucket = aws_s3_bucket.example_bucket.id
+
+  topic {
+    topic_arn = aws_sns_topic.s3_notifications.arn
+    events    = ["s3:ObjectCreated:*"]
+  }
+
+  depends_on = [aws_s3_bucket.example_bucket, aws_sns_topic.s3_notifications]
+}
+resource "aws_sns_topic" "s3_notifications" {
+  name = "s3-backup-notify-topic"
 
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
       {
-        Sid       = "PublicReadGetObject",
+        Sid       = "AllowS3Publish",
         Effect    = "Allow",
-        Principal = "*",
-        Action    = "s3:GetObject",
-        Resource  = "${aws_s3_bucket.example_bucket.arn}/*"
+        Principal = {
+          Service = "s3.amazonaws.com"
+        },
+        Action    = "SNS:Publish",
+        Resource  = "*",
+        Condition = {
+          ArnLike = {
+            "aws:SourceArn" = "arn:aws:s3:::${var.bucket_name}"
+          }
+        }
       }
     ]
   })
