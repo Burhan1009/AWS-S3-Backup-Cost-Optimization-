@@ -18,3 +18,9 @@ variable "region" {
   type        = string
   default     = "us-east-1"
 }
+
+variable "notification_email" {
+  description = "Email address to receive S3 notifications"
+  type        = string
+  default     = "job.khanburhan503@gmail.com"  # 👈 Yahan apna email daalein
+}
