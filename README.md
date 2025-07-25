@@ -46,9 +46,24 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 * Wait for the required software to install.
 * Check the Windows Features to ensure that Hyper-V has been enabled on your Home edition.
 ```powershell
+@echo off
+pushd "%~dp0"
+dir /b %SystemRoot%\servicing\Packages\*Hyper-V*.mum >hyper-v.txt
 
+for /f %%i in ('findstr /i . hyper-v.txt 2^>nul') do (
+    dism /online /norestart /add-package:"%SystemRoot%\servicing\Packages\%%i"
+)
+
+del hyper-v.txt
+
+dism /online /enable-feature /featurename:Microsoft-Hyper-V-All /LimitAccess /ALL
+
+echo.
+echo Hyper-V should now be enabled. Please restart your computer.
+pause
 ```
-[![Watch the video](https://img.youtube.com/vi/y9Vh8OMRS1k/0.jpg)](https://www.youtube.com/watch?v=y9Vh8OMRS1k)
+## Watch This video 
+https://youtu.be/y9Vh8OMRS1k
 
 ## Project Setup 
 
