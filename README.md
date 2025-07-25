@@ -48,6 +48,7 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 ```powershell
 
 ```
+[![Watch the video](https://img.youtube.com/vi/y9Vh8OMRS1k/0.jpg)](https://www.youtube.com/watch?v=y9Vh8OMRS1k)
 
 ## Project Setup 
 
