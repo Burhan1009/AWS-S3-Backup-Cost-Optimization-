@@ -41,6 +41,14 @@ Local data → Compressed ZIPs → Uploaded via Python → AWS S3 → Glacier (v
 2. AWS
 * An AWS account with : **IAM user with programmatic access & S3** and **Glacier permissions**
 
+## If you have Windows 10 or Windows 11 Home edition and want to run a Windows simulation on your current system using Hyper-V, follow these steps:
+* Create a batch file and run it in your Windows Command Prompt.
+* Wait for the required software to install.
+* Check the Windows Features to ensure that Hyper-V has been enabled on your Home edition.
+```powershell
+
+```
+
 ## Project Setup 
 
 Fist Step Need to install Python Software & Setup Enviornment 
