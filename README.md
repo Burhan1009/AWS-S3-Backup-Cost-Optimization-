@@ -142,7 +142,7 @@ pip show boto3
 
 ## 3 **Configure AWS CLI**
 1. **Download AWS CLI**:  
-   - - Go to the [Official Website](https://awscli.amazonaws.com/AWSCLIV2.msi).  
+   - - Go to the [Official Website](https://s3.amazonaws.com/aws-cli/AWSCLI64PY3.msi).  
    - Download the MSI installer for Windows.  
 
 2. **Run the Installer**:  
