@@ -1,4 +1,4 @@
-# AWS-S3-Backup-Cost-Optimization-
+# AWS S3 Backup Cost Optimization with Python (boto3)
 AWS S3 Backup Cost Optimization with Python (boto3): Automatically Move Old Backups to Glacier & Send Notifications via SNS Using Lifecycle Policies
 
 ![image](https://github.com/user-attachments/assets/b40b6158-970c-4014-8e39-352c2b0ff7bc)
